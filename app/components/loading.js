@@ -8,12 +8,8 @@ const styles = {
 }
 
 class Loading extends React.Component {
-	constructor(props) {
-		super(props);
-
-		this.state = {
-			text: props.text
-		};
+	state = {
+		text: this.props.text
 	}
 
 	componentDidMount() {

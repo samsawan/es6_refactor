@@ -3,18 +3,11 @@ import { Link } from 'react-router-dom';
 import PlayerPreview from './player_preview';
 
 class PlayerInput extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			username: ''
-		}
-
-		this.handleChange = this.handleChange.bind(this);
-		this.handleSubmit = this.handleSubmit.bind(this);
+	state = {
+		username: ''
 	}
 
-
-	handleChange(event) {
+	handleChange = (event) => {
 		// you have to capture the event in a variable here
 		// by the time the callback is called, the event is long gone
 		// so you cant reference it in the setState func
@@ -22,7 +15,7 @@ class PlayerInput extends React.Component {
 		this.setState(() => ({ username: value }))
 	}
 
-	handleSubmit(event) {
+	handleSubmit = (event) => {
 		event.preventDefault();
 		this.props.onSubmit(this.props.id, this.state.username);
 	}
@@ -54,27 +47,21 @@ class PlayerInput extends React.Component {
 }
 
 class Battle extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			playerOneName: '',
-			playerTwoName: '',
-			playerOneImage: null,
-			playerTwoImage: null
-		}
-
-		this.handleSubmit = this.handleSubmit.bind(this);
-		this.handleReset = this.handleReset.bind(this);
+	state = {
+		playerOneName: '',
+		playerTwoName: '',
+		playerOneImage: null,
+		playerTwoImage: null
 	}
 
-	handleSubmit(id, username) {
+	handleSubmit = (id, username) => {
 		this.setState(() => ({
 			[id + 'Name']: username,
 			[id + 'Image']: `https://github.com/${username}.png?size=200`
 		}))
 	}
 
-	handleReset(id) {
+	handleReset = (id) => {
 		this.setState(() => ({
 			[id + 'Name'] : '',
 			[id + 'Image']: null

@@ -46,22 +46,16 @@ function RepoGrid({ repos }) {
 }
 
 class Popular extends React.Component {
-
-	constructor(props) {
-		super(props);
-		this.state = {
-			selectedLanguage: 'All',
-			repos: null
-		};
-
-		this.updateLanguage = this.updateLanguage.bind(this);
+	state = {
+		selectedLanguage: 'All',
+		repos: null
 	}
 
 	componentDidMount() {
 		this.updateLanguage(this.state.selectedLanguage)
 	}
 
-	updateLanguage(newLanguage) {
+	updateLanguage = (newLanguage) => {
 		this.setState(() => ({selectedLanguage: newLanguage, repos: null}));
 		fetchPopularRepos(newLanguage)
 		.then((repos) => this.setState(() => ({ repos })));
