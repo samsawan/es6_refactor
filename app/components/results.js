@@ -1,9 +1,9 @@
-const React = require('react');
-const queryString = require('query-string');
-const api = require('../utils/api');
-const Link = require('react-router-dom').Link;
-const PlayerPreview = require('./player_preview');
-const Loading = require('./loading');
+import React from 'react';
+import queryString from 'query-string';
+import { battle } from '../utils/api';
+import { Link } from 'react-router-dom';
+import PlayerPreview from './player_preview';
+import Loading from './loading';
 
 function Profile({ info }) {
 	return(
@@ -46,7 +46,7 @@ class Results extends React.Component {
 	}
 	componentDidMount() {
 		const { playerOneName, playerTwoName } = queryString.parse(this.props.location.search);
-		api.battle([playerOneName, playerTwoName])
+		battle([playerOneName, playerTwoName])
 			.then((results) => {
 				if (results === null) {
 					return this.setState(() => ({
@@ -96,4 +96,4 @@ class Results extends React.Component {
 	}
 }
 
-module.exports = Results;
+export default Results;

@@ -1,6 +1,6 @@
-const React = require('react');
-const Link = require('react-router-dom').Link;
-const PlayerPreview = require('./player_preview');
+import React from 'react';
+import { Link } from 'react-router-dom';
+import PlayerPreview from './player_preview';
 
 class PlayerInput extends React.Component {
 	constructor(props) {
@@ -32,7 +32,7 @@ class PlayerInput extends React.Component {
 		const { username } = this.state;
 		const { label } = this.props;
 
-		return
+		return(
 			<form className='column' onSubmit={this.handleSubmit}>
 				<label className='header' htmlFor='username'>{label}</label>
 				<input
@@ -76,13 +76,13 @@ class Battle extends React.Component {
 
 	handleReset(id) {
 		this.setState(() => ({
-			[id + 'Name'] = '',
-			[id + 'Image'] = null
+			[id + 'Name'] : '',
+			[id + 'Image']: null
 		}))
 	}
 
 	render() {
-		const { match } this.props;
+		const { match } = this.props;
 		const { playerOneName, playerOneImage, playerTwoName, playerTwoImage } = this.state;
 		return(
 			<div>
@@ -124,4 +124,4 @@ class Battle extends React.Component {
 	}
 }
 
-module.exports = Battle;
+export default Battle;

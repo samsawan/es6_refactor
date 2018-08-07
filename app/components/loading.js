@@ -1,4 +1,4 @@
-const React = require('react');
+import React from 'react';
 
 const styles = {
 	content: {
@@ -43,4 +43,4 @@ Loading.defaultProps = {
 	speed: 300
 }
 
-module.exports = Loading;
+export default Loading;

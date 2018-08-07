@@ -1,6 +1,6 @@
-const React = require('react');
+import React from 'react';
 
-function PlayerPreview({ avatar, username, children }) {
+export default function PlayerPreview({ avatar, username, children }) {
 	return (
 		<div>
 			<div className='column'>
@@ -15,5 +15,3 @@ function PlayerPreview({ avatar, username, children }) {
 		</div>
 	)
 }
-
-module.exports = PlayerPreview;
