@@ -55,10 +55,10 @@ class Popular extends React.Component {
 		this.updateLanguage(this.state.selectedLanguage)
 	}
 
-	updateLanguage = (newLanguage) => {
+	updateLanguage = async (newLanguage) => {
 		this.setState(() => ({selectedLanguage: newLanguage, repos: null}));
-		fetchPopularRepos(newLanguage)
-		.then((repos) => this.setState(() => ({ repos })));
+		const repos = await fetchPopularRepos(newLanguage);
+		this.setState(() => ({ repos }));
 	}
 
 // HW: make the loading thing like a loading animation
