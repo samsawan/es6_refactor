@@ -40,7 +40,7 @@ function RepoGrid({ repos }) {
 						</ul>
 					</li>
 				)
-			))}
+			)})}
 		</ul>
 	)
 }
