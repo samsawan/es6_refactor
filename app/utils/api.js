@@ -1,18 +1,17 @@
-import axios from 'axios';
-
 // you may run into rate limiting
 
 async function getProfile(username) {
-	const profile = await axios.get(`https://api.github.com/users/${username}`)
-	return profile.data;
+	const repsonse = await fetch(`https://api.github.com/users/${username}`)
+	return response.json();
 }
 
-function getRepos(username) {
-	return axios.get(`https://api.github.com/users/${username}/repos/?per_page=100`);
+async function getRepos(username) {
+	const response =  await fetch(`https://api.github.com/users/${username}/repos/?per_page=100`);
+	return response.json();
 }
 
 function getStarCount(repos) {
-	return repos.data.reduce((count, { stargazers_count }) => count + stargazers_count, 0);
+	return repos.reduce((count, { stargazers_count }) => count + stargazers_count, 0);
 }
 
 function calculateScore({ followers }, repos) {
@@ -46,7 +45,8 @@ export async function battle (players) {
 
 export async function fetchPopularRepos(language) {
 	const encodedUri = window.encodeURI(`https://api.github.com/search/repositories?q=stars:>1+language:${language}&sort=stars&order=desc&type=Repositories`);
-	const repos = await axios.get(encodedUri)
+	const response = await fetch(encodedUri)
 		.catch(handleError)
-	return repos.data.items;
+	const repos = await response.json()
+	return repos.items;
 }
